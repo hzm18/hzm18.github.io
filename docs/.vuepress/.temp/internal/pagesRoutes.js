@@ -1,0 +1,17 @@
+export const pagesRoutes = [
+  ["v-8daa1a0e","/",{"title":"Kellyton的博客","icon":"home","type":"home","readingTime":{"minutes":0.76,"words":228},"excerpt":"<!-- 这是一个博客主页的案例。 要使用此布局，你应该在页面前端设置 layout: Blog 和 home: true。 相关配置文档请见 博客主页。 -->"},["/index.html","/README.md"]],
+  ["v-79fdd481","/home.html",{"title":"项目主页","icon":"home","type":"home","readingTime":{"minutes":2.61,"words":782},"excerpt":"这是项目主页的案例。你可以在这里放置你的主体内容。 想要使用此布局，你需要在页面 front matter 中设置 home: true。 配置项的相关说明详见 项目主页配置。"},["/home","/home.md"]],
+  ["v-5ce0c10e","/posts/java/AQS.html",{"title":"AbstractQueuedSynchronizer","icon":"edit","type":"article","readingTime":{"minutes":6.94,"words":2081},"excerpt":"AbstractQueuedSynchronizer \" Provides a framework for implementing blocking locks and related synchronizers (semaphores, events, etc) that rely on first-in-first-out (FIFO) wait qu","date":"2022-09-04T00:00:00.000Z","localizedDate":"2022年9月4日","category":["后端","Java"],"tag":["JUC","AQS"]},["/posts/java/AQS","/posts/java/AQS.md"]],
+  ["v-3706649a","/404.html",{"title":"","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/404"]],
+  ["v-5bc93818","/category/",{"title":"分类","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/category/index.html"]],
+  ["v-744d024e","/tag/",{"title":"标签","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/tag/index.html"]],
+  ["v-e52c881c","/article/",{"title":"文章","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/article/index.html"]],
+  ["v-75ed4ea4","/encrypted/",{"title":"加密","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/encrypted/index.html"]],
+  ["v-d804e652","/slide/",{"title":"幻灯片","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/slide/index.html"]],
+  ["v-154dc4c4","/star/",{"title":"收藏","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/star/index.html"]],
+  ["v-01560935","/timeline/",{"title":"时间轴","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/timeline/index.html"]],
+  ["v-eddfd732","/category/%E5%90%8E%E7%AB%AF/",{"title":"后端 分类","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/category/后端/","/category/%E5%90%8E%E7%AB%AF/index.html"]],
+  ["v-b30dc3f6","/tag/juc/",{"title":"JUC 标签","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/tag/juc/index.html"]],
+  ["v-5831b135","/category/java/",{"title":"Java 分类","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/category/java/index.html"]],
+  ["v-b3160ccc","/tag/aqs/",{"title":"AQS 标签","type":"page","readingTime":{"minutes":0,"words":0},"excerpt":""},["/tag/aqs/index.html"]],
+]
