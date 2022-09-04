@@ -18,7 +18,7 @@ tag:
 
 等待队列是"CLH"锁定队列的变体。
 
-包括`ReentrantLock`、`Semaphore`都是使用`AQS`完成。
+包括`ReentrantLock`、`Semaphore` 都是使用`AQS`完成。
 
 
 
