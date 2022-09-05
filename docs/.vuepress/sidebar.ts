@@ -12,6 +12,12 @@ export default sidebar([
       collapsable: true,
       prefix: "java/",
       children: "structure",
+    },{
+      text: "Middleware",
+      icon: "note",
+      collapsable: true,
+      prefix: "middleware/",
+      children: "structure",
     }/* , {
       text: "article",
       icon: "note",
