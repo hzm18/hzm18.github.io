@@ -31,14 +31,14 @@ public static void main(String[] args) throws InterruptedException {
         countDownLatch.countDown();
     }, 30, TimeUnit.SECONDS);
 
-    countDownLatch.await();
+    countDownLatch.await(); 
     timer.stop();
 }
 ```
 
 
 
-## 构造方法
+## HashedWheelTimer的一些东西
 
 ```java
 public HashedWheelTimer(
@@ -91,7 +91,38 @@ public HashedWheelTimer(
 }
 ```
 
+加入一个timeout其实不是直接就找到bucket就加入到其中的链表，而是先放到队列中，每过一次tick再取出来把它们放到对应的bucket中去
 
+```java
+public Timeout newTimeout(TimerTask task, long delay, TimeUnit unit) {
+    checkNotNull(task, "task");
+    checkNotNull(unit, "unit");
+    
+    long pendingTimeoutsCount = pendingTimeouts.incrementAndGet();
+
+    if (maxPendingTimeouts > 0 && pendingTimeoutsCount > maxPendingTimeouts) {
+        pendingTimeouts.decrementAndGet();
+        throw new RejectedExecutionException("Number of pending timeouts ("
+            + pendingTimeoutsCount + ") is greater than or equal to maximum allowed pending "
+            + "timeouts (" + maxPendingTimeouts + ")");
+    }
+    // 尝试修改state为开始状态
+    start();
+
+    // Add the timeout to the timeout queue which will be processed on the next tick.
+    // During processing all the queued HashedWheelTimeouts will be added to the correct HashedWheelBucket.
+    long deadline = System.nanoTime() + unit.toNanos(delay) - startTime;
+
+    // Guard against overflow.
+    if (delay > 0 && deadline < 0) {
+        deadline = Long.MAX_VALUE;
+    }
+    // 创建一个timeout,并加入到timeouts的队列中，该队列是JCTools的MpscQueue
+    HashedWheelTimeout timeout = new HashedWheelTimeout(this, task, deadline);
+    timeouts.add(timeout);
+    return timeout;
+}
+```
 
 ## 内部的几个类：
 
@@ -326,7 +357,7 @@ private final class Worker implements Runnable {
             timeout.remainingRounds = (calculated - tick) / wheel.length;
 
             final long ticks = Math.max(calculated, tick); // Ensure we don't schedule for past.
-            int stopIndex = (int) (ticks & mask);   // 通过取模定位
+            int stopIndex = (int) (ticks & mask);   // 模定位
 
             HashedWheelBucket bucket = wheel[stopIndex];    // 塞到对应位置的bucket链表
             bucket.addTimeout(timeout);
